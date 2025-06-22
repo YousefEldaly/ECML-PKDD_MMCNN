@@ -47,8 +47,8 @@ def main():
 		GetData = DataProcess(data_2b_path,data_2b_files,choose2aor2b)
 	else:
 		GetData = DataProcess(data_2a_path,data_2a_files,1,2)
-	data = GetData2a.data
-	label = GetData2a.label
+	data = GetData.data
+	label = GetData.label
 
 	k = 5
 	window_long = 1000
