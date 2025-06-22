@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Evaluations():
     def __init__ (self,
                    history,
