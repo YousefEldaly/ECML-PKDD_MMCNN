@@ -111,13 +111,13 @@ def main():
 		model = MMCNN.model
 		
 		checkpoint_path = f"model_fold_{fold+1}_{args.choosedata}.h5"
-	        checkpoint = ModelCheckpoint(
-	            filepath=checkpoint_path,
-	            save_best_only=True,
-	            monitor='val_loss',
-	            mode='min',
-	            verbose=1
-	        )
+		checkpoint = ModelCheckpoint(
+			filepath=checkpoint_path,
+			save_best_only=True,
+			monitor='val_loss',
+			mode='min',
+			verbose=1
+		)
 		
 		early_stopping = EarlyStopping(monitor='val_loss',patience=30,verbose=0,mode='auto')
 		history = model.fit(train_data,
@@ -127,10 +127,10 @@ def main():
 							callbacks=[early_stopping],
 							shuffle=True,
 							validation_data = (validation_data,validation_label))
-
+		
 		final_model_path = f"final_model_fold_{fold+1}_{args.choosedata}.h5"
-	        model.save(final_model_path)
-	        print(f"Saved final model for fold {fold+1} at {final_model_path}")
+		model.save(final_model_path)
+		print(f"Saved final model for fold {fold+1} at {final_model_path}")
 	
 		loss_score,error,validation_score = model.evaluate(validation_data,validation_label)
 		Result = Evaluations(history,
